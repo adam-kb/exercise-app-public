@@ -5,12 +5,12 @@ import prisma from "@/app/lib/prisma";
 async function main() {
   // Clear the database
 
-  await prisma.exercise.deleteMany();
   await prisma.featureExercise.deleteMany();
+  await prisma.media.deleteMany();
+  await prisma.exercise.deleteMany();
   await prisma.muscleGroup.deleteMany();
   await prisma.targetMuscle.deleteMany();
   await prisma.equipment.deleteMany();
-  await prisma.media.deleteMany();
 
   // Seed Muscle Groups
   const chest = await prisma.muscleGroup.create({
