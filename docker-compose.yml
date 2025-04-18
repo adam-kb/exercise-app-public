@@ -9,11 +9,12 @@ services:
     ports:
       - "5434:5432"
     volumes:
-      -  postgres-exercise-public-data:/var/lib/postgresql/data
+      - postgres-exercise-public-data:/var/lib/postgresql/data
 
   media-server:
     build:
-      context: ./media-server-public
+      context: . # so we can access root-level media
+      dockerfile: media-server/Dockerfile
     container_name: media_server_public
     ports:
       - "8081:80"
