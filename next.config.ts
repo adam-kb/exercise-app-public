@@ -12,6 +12,13 @@ const nextConfig: NextConfig = {
         search: '',
       },
       {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '8081',
+        pathname: '/media/**',
+        search: '',
+      },
+      {
         protocol: 'https',
         hostname: 'img.youtube.com',
         port: '',

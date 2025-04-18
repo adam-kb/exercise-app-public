@@ -37,7 +37,7 @@ This is an **exercise tracking app** built with **Next.js**, **Prisma**, and **T
 ### **Installation & Setup**
 **Clone the repository:**
 ```sh
-git clone https://github.com/adam-kb/01-exercise-app.git
+git clone https://github.com/adam-kb/exercise-app-public.git
 cd exercise-app
 ```
 

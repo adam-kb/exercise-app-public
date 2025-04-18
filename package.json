@@ -16,15 +16,19 @@
     "test": "jest",
     "push:dev": "dotenv -e .env.development -- prisma db push",
     "seed:dev": "dotenv -e .env.development -- tsx prisma/seed.ts",
-    "queryTest": "dotenv -e .env.development -- npx tsx prisma/tests/testQueries.ts"
+    "queryTest": "dotenv -e .env.development -- npx tsx prisma/tests/testQueries.ts",
+    "setup:db": "prisma generate && prisma db push && tsx prisma/seed.ts",
+    "db:start": "docker compose up -d",
+    "db:stop": "docker compose down",
+    "setup:all": "npm install && docker compose up -d && prisma generate && prisma db push && tsx prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.0.1",
     "@tanstack/react-query": "^5.61.0",
     "multer": "^1.4.5-lts.1",
-    "next": "15.0.3",
-    "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "next": "^15.3.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "uuid": "^11.0.3",
     "zod": "^3.23.8"
   },
@@ -46,7 +50,7 @@
     "postcss": "^8",
     "prisma": "^6.0.1",
     "react-intersection-observer": "^9.14.0",
-    "react-test-renderer": "^18.3.1",
+    "react-test-renderer": "18.2.0",
     "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
     "tsx": "^4.19.2",
