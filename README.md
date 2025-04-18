@@ -1,66 +1,118 @@
 # Exercise App
 
 ## Overview
-This is an **exercise tracking app** built with **Next.js**, **Prisma**, and **TanStack Query**. The goal is to provide a clean, functional UI for searching exercises, creating workouts, and organizing fitness routines. This is a **portfolio project** and is **not a commercial product**.
+
+This is an **exercise tracking app** built with **Next.js**, **Prisma**, and **TanStack Query**. The goal is to provide a clean, functional UI for searching exercises, creating workouts, and organizing fitness routines. This is a **portfolio project** and is not a commercial product.
 
 ## Tech Stack
+
 - **Frontend:** Next.js (React-based framework)
-- **State Management & Data Fetching:** TanStack Query
+- **Data Fetching & State Management:** TanStack Query
 - **Database ORM:** Prisma
-<!-- - **Backend:** (TBD, will be updated later) -->
+- **Local Database:** Dockerized PostgreSQL
+- **Media Server:** Nginx container serving static images
 
 ## Features & Roadmap
 
-### **Phase 1: MVP (Completed)**
-- ✅ **Basic CRUD App** (Done)
-- ✅ **Basic Search Page** (Done)
+### Phase 1: MVP (Complete)
+- ✅ Basic CRUD for exercises
+- ✅ Search page
 
-### **Phase 2: Core Features & UX Enhancements**
-- 🔜 **Exercises** – Images for each exercise
-- 🔜 **Workouts System** – Users can create, update, and organize workouts.
-- ⬜ **Exercise Autocomplete** – Suggest exercises as users type in the search bar.
-- ⬜ **Sorting & Filtering** – Sort exercises by tags (muscle group, equipment, difficulty).
-- ⬜ **Related Exercises** – Show alternatives or progressions for exercises.
+### Phase 2: UX & Core Functionality
+- 🔜 Thumbnails for each exercise
+- 🔜 Workout creation and editing
+- ⬜ Autocomplete search
+- ⬜ Sort/filter exercises by tags (muscle group, equipment, difficulty)
+- ⬜ Related exercise suggestions
 
-### **Phase 3: User Accounts & Personalization**
-- ⬜ **User Authentication** – Accounts via email/social login.
-- ⬜ **Custom Workout Plans** – Users can create structured training programs.
-- ⬜ **Favorites & History** – Users can save workouts/exercises.
+### Phase 3: User Personalization
+- ⬜ User authentication (email or social login)
+- ⬜ Save custom workout plans
+- ⬜ View history or mark favorites
+
+---
+
+## System Requirements
+
+To run this project locally, you’ll need:
+
+- [Node.js](https://nodejs.org/) (v18+ recommended)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop) installed and running
+
+> Docker is required to run the local PostgreSQL database and media server.
+
+---
 
 ## Getting Started
 
-### **Prerequisites**
-- Node.js (Latest LTS version recommended)
-- npm or yarn installed
-- PostgreSQL (or your chosen database, configured via Prisma)
+### 1. Clone the Repository
 
-### **Installation & Setup**
-**Clone the repository:**
-```sh
+```bash
 git clone https://github.com/adam-kb/exercise-app-public.git
-cd exercise-app
+cd exercise-app-public
 ```
 
-**Install dependencies:**
-```sh
-npm install  # or yarn install
+### 2. Create a `.env` File
+
+Copy the example environment file:
+
+```bash
+cp .env.example .env
 ```
 
-**Set up environment variables:**
-Create a `.env` file in the root directory and add your database credentials and other necessary environment variables.
-```env
-DATABASE_URL=your_database_url_here
-NEXT_PUBLIC_API_URL=your_api_endpoint_here
+Ensure the values in `.env` match your Docker container setup. The provided defaults should work for most local environments.
+
+### 3. Run the Project Setup
+
+Choose one of the following:
+
+**Option A: npm script**
+
+```bash
+npm run setup:all
 ```
 
-**Run the development server:**
-```sh
-npm run dev  # or yarn dev
+**Option B: bash script**
+
+```bash
+bash scripts/setup.sh
 ```
-The app will be available at `http://localhost:3000`.
+
+This will:
+- Install dependencies
+- Start Docker containers
+- Generate the Prisma client
+- Push the database schema
+- Seed the database
+
+### 4. Start the Development Server
+
+```bash
+npm run dev
+```
+
+Open the app at [http://localhost:3000](http://localhost:3000)
+
+---
+
+## Media Folder
+
+The app serves images from the `/media` directory. These include exercise thumbnails and other static content.
+
+If you're running the project locally:
+- Add placeholder images to `/media/thumbnails/` if none exist
+- You may include your own demo images
+- The `.gitkeep` file ensures this directory is versioned even if empty
+
+---
 
 ## License
-This project is **open-source** under the MIT License. Feel free to fork, modify, or contribute.
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). Feel free to fork, modify, or contribute.
+
+---
 
 ## Disclaimer
-This app is a **personal portfolio project** and is provided **as-is**, without guarantees of accuracy, completeness, or suitability for fitness training. Consult a **qualified healthcare provider** before beginning any exercise program.
+
+This project is a personal portfolio piece. It is not intended for real-world use or fitness instruction. Always consult a qualified health professional before beginning any new exercise program.
