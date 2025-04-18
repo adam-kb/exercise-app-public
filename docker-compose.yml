@@ -14,7 +14,7 @@ services:
   media-server:
     build:
       context: . # so we can access root-level media
-      dockerfile: media-server/Dockerfile
+      dockerfile: media-server-public/Dockerfile
     container_name: media_server_public
     ports:
       - "8081:80"
